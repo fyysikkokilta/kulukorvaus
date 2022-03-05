@@ -14,21 +14,30 @@ import axios from 'axios'
 
 
 const Reimbursement = (): JSX.Element => {
-    const onSubmit = (event: React.FormEvent) => {
+    const onSubmit = async (event: any) => {
+        console.log(event)
         event.preventDefault()
         const name = event.target.name.value
         const iban = event.target.iban.value
-        axios.post('localhost:8000/api/reimburse', data={})
+
+        const form = new FormData();
+        form.append('name', name)
+        form.append('iban', iban)
+
+        const res = await axios.post('/api/reimburse', form, {headers: {
+            'Accept': 'application/json'
+        }})
+        console.log(res.data)
     }
     return (
-        <Form>
-            <Form.Group controlId='name' >
+        <Form onSubmit={onSubmit}>
+            <Form.Group >
                 <Form.Label>Nimi</Form.Label>
-                <Form.Control />
+                <Form.Control name='name'/>
             </Form.Group>
-            <Form.Group controlId='iban' >
+            <Form.Group>
                 <Form.Label>IBAN</Form.Label>
-                <Form.Control />
+                <Form.Control name='iban'/>
             </Form.Group>
             <Button type='submit'>Lähetä</Button>
         </Form>
