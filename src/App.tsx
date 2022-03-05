@@ -7,6 +7,9 @@ import {
 import Reimbursement from './features/reimbursement/Reimbursement'
 import Layout from './features/core/Layout'
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 const App = () => {
     return (
         <BrowserRouter>

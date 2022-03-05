@@ -9,12 +9,13 @@ type LayoutProps = {
 
 const Layout = (props: LayoutProps): JSX.Element => {
     return (
-        <Container fluid='md'>
-            <Col >
-                <Header />
-                heimoi
-                {props.children}
-            </Col>
+        <Container fluid className='p-0'>
+            <Header />
+            <Row className='justify-content-md-center' >
+                <Col md={8}>
+                    {props.children}
+                </Col>
+            </Row>
         </Container>
     )
 }
